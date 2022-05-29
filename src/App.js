@@ -9,6 +9,8 @@ export default function App() {
    const [timer, setTimer] = React.useState(0);
    const [showInput, setShowInput] = React.useState(false);
 
+   const peremenaya = 'blya';
+
    const headerRef = React.useRef();
    const popupRef = React.useRef();
 
