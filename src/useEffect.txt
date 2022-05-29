@@ -1,0 +1,55 @@
+import React from 'react'
+
+export const List = () => {
+  const [numbers, setNumbers] = React.useState([1, 555, 3])
+  const [count, setCount] = React.useState(0)
+
+  const addNumber = () => {
+    const randNumber = Math.round(Math.random() * 10);
+    const newArr = [...numbers, randNumber]
+    setNumbers(newArr)
+  }
+
+  // useEffect следит, только за обновлением count и всегда обновляется
+
+  React.useEffect(() => {
+    console.log('COUNT был обновлен')
+    setCount(count)
+  })
+
+  // useEffect следит, только за обновлением numbers и всегда обновляется
+
+  React.useEffect(() => {
+    console.log('NUMBERS был обновлен')
+  }, [numbers])
+
+    // useEffect следит,за всем и всегда обновляется
+
+  React.useEffect(() => {
+    console.log('Компонетн будет всегда обновляться')
+  })
+
+  // useEffect следит, только за компонентом и выполняется один раз
+
+  React.useEffect(() => {
+    console.log('Появись');
+
+    // когда компонент будет обновлен, нужно выполнить удаление
+    return () => {
+      console.log('Удались')
+    }
+  }, [])
+  
+  return (
+    <div>
+      <div>
+        <h1>{count}</h1>
+        <button onClick={() => setCount(count + 1)}>+</button>
+        {numbers.map((num, index) => (
+          <p key={index}>{num}</p>
+        ))}
+        <button onClick={addNumber}>Add number</button>
+      </div>
+    </div>
+  )
+}
