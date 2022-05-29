@@ -5,7 +5,7 @@ const initialState = {
 export const photo = (state = initialState, action) => {
    switch (action.type) {
       case 'APP/GET': {
-         return {...state, photo:action.photo}
+         return { ...state, photo: action.photo };
       }
 
       case 'APP/PHOTO': {
